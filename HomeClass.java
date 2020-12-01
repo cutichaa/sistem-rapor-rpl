@@ -401,18 +401,18 @@ public class HomeClass {
 		System.out.println("Kelas      : " + kelas);
 		System.out.println("Semester   : " + semester);
 		System.out.println("*********************************************************");
-		System.out.println("Pendidikan Agama						 	: " + nilaiMapel[0]);
-		System.out.println("Pendidikan Pancasila dan Kewarganegaraan	: " + nilaiMapel[1]);
-		System.out.println("Bahasa Indonesia							: " + nilaiMapel[2]);
-		System.out.println("Matematika									: " + nilaiMapel[3]);
-		System.out.println("Ilmu Pengetahuan Alam						: " + nilaiMapel[4]);
-		System.out.println("Ilmu Pengetahuan Sosial						: " + nilaiMapel[5]);
-		System.out.println("Kerajinan Tangan dan Kesenian				: " + nilaiMapel[6]);
-		System.out.println("Pendidikan Jasmani dan Kesehatan			: " + nilaiMapel[7]);
-		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta	: " + nilaiMapel[8]);
-		System.out.println("Bahasa Inggris								: " + nilaiMapel[9]);
+		System.out.println("Pendidikan Agama: " + nilaiMapel[0]);
+		System.out.println("Pendidikan Pancasila dan Kewarganegaraan: " + nilaiMapel[1]);
+		System.out.println("Bahasa Indonesia: " + nilaiMapel[2]);
+		System.out.println("Matematika: " + nilaiMapel[3]);
+		System.out.println("Ilmu Pengetahuan Alam: " + nilaiMapel[4]);
+		System.out.println("Ilmu Pengetahuan Sosial: " + nilaiMapel[5]);
+		System.out.println("Kerajinan Tangan dan Kesenian: " + nilaiMapel[6]);
+		System.out.println("Pendidikan Jasmani dan Kesehatan: " + nilaiMapel[7]);
+		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta: " + nilaiMapel[8]);
+		System.out.println("Bahasa Inggris: " + nilaiMapel[9]);
 		System.out.println("*********************************************************");
-		System.out.println("Nilai Akhir Rapor 							: " + nilaiRaporSementara);
+		System.out.println("Nilai Akhir Rapor: " + nilaiRaporSementara);
 		System.out.println("========================================================");
 
 		System.out.println("Ubah Nilai / Lanjut:");
@@ -513,11 +513,11 @@ public class HomeClass {
 	private static void inputAbsen() {
 		Scanner input = new Scanner(System.in);
 		try {
-			System.out.print("Sakit				: ");
+			System.out.print("Sakit: ");
 			sakit = input.nextInt();
-			System.out.print("Izin				: ");
+			System.out.print("Izin: ");
 			izin = input.nextInt();
-			System.out.print("Tanpa Keterangan	: ");
+			System.out.print("Tanpa Keterangan: ");
 			izin = input.nextInt();
 			cetakRapor();
 		} catch (InputMismatchException e) {
