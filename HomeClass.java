@@ -11,6 +11,7 @@ public class HomeClass {
 		akunGuru.put("guru1", "gurusatu");
 		akunGuru.put("guru2", "gurudua");
 		System.out.println("SELAMAT DATANG DI APLIKASI E-RAPOR");
+		System.out.println("===================================");
 		tampilkanMenuLoginGuru();
 		//pilihKelas();
 		//inputNilai();
@@ -21,17 +22,20 @@ public class HomeClass {
 	 */
 	private static void tampilkanMenuLoginGuru() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("LOGIN Guru");
+		System.out.println("Login Guru");
 		System.out.print("Username: ");
 		String username = input.next();
 		System.out.print("Password: ");
 		String password = input.next();
 		if (checkLogin(username, password)) {
 			System.out.println("");
-			System.out.println("LOGIN Berhasil!");
+			System.out.println("Login Berhasil!");
+			System.out.println("");
 			pilihKelas();
 		}
 		else
+			System.out.println("");
+			System.out.println("Jika lupa usernama atau password, silahkan tanya admin!");
 			tampilkanMenuLoginGuru();
 		
 	}
@@ -47,9 +51,11 @@ public class HomeClass {
 			if(akunGuru.get(username).equals(password)) {
 				return true;
 			} else {
+				System.out.println("");
 				System.out.println("Password salah!");
 			}
 		} else {
+			System.out.println("");
 			System.out.println("Username tidak ada!");
 		}
 		return false;
