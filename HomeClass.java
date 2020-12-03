@@ -7,7 +7,7 @@ public class HomeClass {
 	private static String[] namaKelas = { "IA", "IB", "IIA", "IIB", "IIIA", "IIIB", "IVA", "IVB", "VA", "VB", "VIA", "VIB" };
 	private static HashMap<String, String> akunGuru = new HashMap<String, String>();
 	
-	private static void main(String[] args) {
+	public static void main(String[] args) {
 		akunGuru.put("guru1", "gurusatu");
 		akunGuru.put("guru2", "gurudua");
 		System.out.println("SELAMAT DATANG DI APLIKASI E-RAPOR");
