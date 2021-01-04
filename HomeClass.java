@@ -1,9 +1,12 @@
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class HomeClass {
-	private static String nama, nisn, kelas, semester, pramuka, kelakukan, kerajinan, kerapihan;
-	private static int nilaiRapor, sakit, izin, alpa;
-	private static int[] nilaiMapel = new int[10];
+	private static String nama, nisn, kelas, semester, pramuka, kelakukan, kerajinan, kerapihan, sakit, izin, alpa;
+	private static double nilaiRapor;
+	private static double[] nilaiMapel = new double[10];
+	private static DecimalFormat df = new DecimalFormat("#.##");
+	private static double nilaiAkhir;
 	private static String[] namaKelas = { "IA", "IB", "IIA", "IIB", "IIIA", "IIIB", "IVA", "IVB", "VA", "VB", "VIA", "VIB" };
 	private static HashMap<String, String> akunGuru = new HashMap<String, String>();
 	
@@ -184,18 +187,34 @@ public class HomeClass {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Nama Siswa: ");
 		nama = input.nextLine();
-		try {
+		if (nama.matches("[a-zA-Z]+") == false){
+			System.out.println("Nama yang dimasukkan salah !");
+			inputDataAnak();
+		}else{
+			masukNISN();	
+		}
+		
+
+	}
+	private static void masukNISN(){
+		Scanner input = new Scanner(System.in);
 			System.out.print("NISN: ");
 			nisn = input.next();
-			int nisnInt = Integer.parseInt(nisn);
-			pilihMapel();
-		} catch (NumberFormatException e) {
-			// TODO: handle exception
-			System.out.println("Input NISN Salah!");
-			System.out.println("");
-			inputDataAnak();
-		}
+			if(nisn.matches("\\d*") == false){
+				System.out.println("masukkan angka");
+				masukNISN();
+			}else if (nisn.matches("\\d*") == true){
+				if(nisn.length() != 6 ){
+					System.out.println("masukkan 6 digit angka");
+					masukNISN();
+				}else{
+					pilihMapel();
+					inputDataAnak();
+				}
+				
 
+			}
+			
 	}
 
 	/**
@@ -228,34 +247,195 @@ public class HomeClass {
 		}
 		switch (mapel) {
 		case "1":
-			Agama();
+		if(nilaiMapel[0] == 0){
+			Agama();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					Agama();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "2":
-			PPKN();
+		if(nilaiMapel[1] == 0){
+			PPKN();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					PPKN();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
+			
 			break;
 		case "3":
-			BahasaIndonesia();
+		if(nilaiMapel[2] == 0){
+			BahasaIndonesia();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					BahasaIndonesia();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "4":
-			Matematika();
+			if(nilaiMapel[3] == 0){
+			Matematika();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					Matematika();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "5":
-			IPA();
+			if(nilaiMapel[4] == 0){
+			IPA();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					IPA();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "6":
-			IPS();
+			if(nilaiMapel[5] == 0){
+			IPS();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					IPS();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "7":
-			Kesenian();
+			if(nilaiMapel[6] == 0){
+			Kesenian();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					Kesenian();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "8":
-			Penjaskes();
+			if(nilaiMapel[7] == 0){
+			Penjaskes();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					Penjaskes();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+				}
+			}
 			break;
 		case "9":
-			PLBJ();
+			if(nilaiMapel[8] == 0){
+			PLBJ();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					PLBJ();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
 			break;
 		case "10":
-			BahasaIng();
+			if(nilaiMapel[9] == 0){
+			BahasaIng();}
+			else{
+				System.out.println("Ingin merubah nilai? ");
+				System.out.println("Y : Ya");
+				System.out.println("T : Tidak");
+				System.out.print("Pilihan :");
+				String pilih = input.next();
+				if(pilih.equals("Y")||pilih.equals("y")){
+					BahasaIng();
+				}else if(pilih.equals("T")||pilih.equals("t")){
+					pilihMapel();
+				}else{
+					System.out.println("pilihan salah!");
+					pilihMapel();
+				}
+			}
+			
 			break;
 		case "11":
 			CekNilai();
@@ -319,60 +499,60 @@ public class HomeClass {
 	/**
 	 * Method ini akan melakukan input nilai per-atribut
 	 */
-	private static int inputNilai() {
-		int[] nilai = new int[7];
-		int nilaiAkhir = 0;
+	private static double inputNilai() {
+		double[] nilai = new double[7];
+		nilaiAkhir = 0;
 		Scanner input = new Scanner(System.in);
-		System.out.println("Masukkan nilai dari skala 0-100");
+		System.out.println("Masukkan nilai dari skala 0-100 (Untuk Koma Gunakan Tanda baca Titik)");
 		try {
 			System.out.print("Ulangan harian 1 : ");
-			nilai[0] = input.nextInt();
+			nilai[0] = input.nextDouble();
 			while(nilai[0] < 0 || nilai[0] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan harian 1 : ");
-				nilai[0] = input.nextInt();
+				nilai[0] = input.nextDouble();
 	        }
 			System.out.print("Ulangan harian 2 : ");
-			nilai[1] = input.nextInt();
+			nilai[1] = input.nextDouble();
 			while(nilai[1] < 0 || nilai[1] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan harian 2 : ");
-				nilai[1] = input.nextInt();
+				nilai[1] = input.nextDouble();
 	        }
 			System.out.print("Ulangan harian 3 : ");
-			nilai[2] = input.nextInt();
+			nilai[2] = input.nextDouble();
 			while(nilai[2] < 0 || nilai[2] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan harian 3 : ");
-				nilai[2] = input.nextInt();
+				nilai[2] = input.nextDouble();
 	        }
 			System.out.print("Ulangan harian 4 : ");
-			nilai[3] = input.nextInt();
+			nilai[3] = input.nextDouble();
 			while(nilai[3] < 0 || nilai[3] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan harian 4 : ");
-				nilai[3] = input.nextInt();
+				nilai[3] = input.nextDouble();
 	        }
 			System.out.print("Akumulasi Nilai Tugas : ");
-			nilai[4] = input.nextInt();
+			nilai[4] = input.nextDouble();
 			while(nilai[4] < 0 || nilai[4] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Akumulasi Nilai Tugas : ");
-				nilai[4] = input.nextInt();
+				nilai[4] = input.nextDouble();
 	        }
 			System.out.print("Ulangan Tengah Semester : ");
-			nilai[5] = input.nextInt();
+			nilai[5] = input.nextDouble();
 			while(nilai[5] < 0 || nilai[5] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan Tengah Semester : ");
-				nilai[5] = input.nextInt();
+				nilai[5] = input.nextDouble();
 	        }
 			System.out.print("Ulangan Akhir Semester : ");
-			nilai[6] = input.nextInt();
+			nilai[6] = input.nextDouble();
 			while(nilai[6] < 0 || nilai[6] > 100) {
 				System.out.println("Nilai tidak sesuai!");
 				System.out.print("Ulangan A Semester : ");
-				nilai[6] = input.nextInt();
+				nilai[6] = input.nextDouble();
 	        }
 		} catch (InputMismatchException e) {
 			// TODO: handle exception
@@ -389,9 +569,11 @@ public class HomeClass {
 	/**
 	 * Method ini akan menghitung nilai akhir rapor
 	 */
-	private static int RataRapor() {
-		int nilaiRapor = (nilaiMapel[0] + nilaiMapel[1] + nilaiMapel[2] + nilaiMapel[3] + nilaiMapel[4] + nilaiMapel[5]
-				+ nilaiMapel[6] + nilaiMapel[7] + nilaiMapel[8] + nilaiMapel[9]) / 10;
+
+	private static double RataRapor() {
+		double bagi = 10;
+		double nilaiRapor = (nilaiMapel[0] + nilaiMapel[1] + nilaiMapel[2] + nilaiMapel[3] + nilaiMapel[4] + nilaiMapel[5]
+				+ nilaiMapel[6] + nilaiMapel[7] + nilaiMapel[8] + nilaiMapel[9]) / bagi;
 		return nilaiRapor;
 	}
 	
@@ -399,7 +581,7 @@ public class HomeClass {
 	 * Method ini akan menampilkan hasil inputan nilai rapor
 	 */
 	private static void CekNilai() {
-		int nilaiRaporSementara = RataRapor();
+		double nilaiRaporSementara = RataRapor();
 		System.out.println("Laporan Hasil Belajar Siswa");
 		System.out.println("========================================================");
 		System.out.println("Nama Siswa : " + nama);
@@ -407,18 +589,18 @@ public class HomeClass {
 		System.out.println("Kelas      : " + kelas);
 		System.out.println("Semester   : " + semester);
 		System.out.println("*********************************************************");
-		System.out.println("Pendidikan Agama: " + nilaiMapel[0]);
-		System.out.println("Pendidikan Pancasila dan Kewarganegaraan: " + nilaiMapel[1]);
-		System.out.println("Bahasa Indonesia: " + nilaiMapel[2]);
-		System.out.println("Matematika: " + nilaiMapel[3]);
-		System.out.println("Ilmu Pengetahuan Alam: " + nilaiMapel[4]);
-		System.out.println("Ilmu Pengetahuan Sosial: " + nilaiMapel[5]);
-		System.out.println("Kerajinan Tangan dan Kesenian: " + nilaiMapel[6]);
-		System.out.println("Pendidikan Jasmani dan Kesehatan: " + nilaiMapel[7]);
-		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta: " + nilaiMapel[8]);
-		System.out.println("Bahasa Inggris: " + nilaiMapel[9]);
+		System.out.println("Pendidikan Agama: " + df.format(nilaiMapel[0]));
+		System.out.println("Pendidikan Pancasila dan Kewarganegaraan: " + df.format(nilaiMapel[1]));
+		System.out.println("Bahasa Indonesia: " + df.format(nilaiMapel[2]));
+		System.out.println("Matematika: " + df.format(nilaiMapel[3]));
+		System.out.println("Ilmu Pengetahuan Alam: " + df.format(nilaiMapel[4]));
+		System.out.println("Ilmu Pengetahuan Sosial: " + df.format(nilaiMapel[5]));
+		System.out.println("Kerajinan Tangan dan Kesenian: " + df.format(nilaiMapel[6]));
+		System.out.println("Pendidikan Jasmani dan Kesehatan: " + df.format(nilaiMapel[7]));
+		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta: " + df.format(nilaiMapel[8]));
+		System.out.println("Bahasa Inggris: " + df.format(nilaiMapel[9]));
 		System.out.println("*********************************************************");
-		System.out.println("Nilai Akhir Rapor: " + nilaiRaporSementara);
+		System.out.println("Nilai Akhir Rapor: " + df.format(nilaiRaporSementara));
 		System.out.println("========================================================");
 
 		System.out.println("Ubah Nilai / Lanjut:");
@@ -518,21 +700,37 @@ public class HomeClass {
 	 */
 	private static void inputAbsen() {
 		Scanner input = new Scanner(System.in);
-		try {
 			System.out.print("Sakit: ");
-			sakit = input.nextInt();
-			System.out.print("Izin: ");
-			izin = input.nextInt();
-			System.out.print("Tanpa Keterangan: ");
-			izin = input.nextInt();
-			cetakRapor();
-		} catch (InputMismatchException e) {
-			// TODO: handle exception
+			sakit = input.next();
+			if (sakit.matches("\\d*") == false){
 			System.out.println("Input salah!");
 			System.out.println("Silakan ulangin Input!");
 			System.out.println("");
-			inputAbsen();
-		}
+			System.out.print("Sakit: ");
+			sakit = input.next();
+			}
+			System.out.print("Izin: ");
+			izin = input.next();
+			if (izin.matches("\\d*") == false){
+			System.out.println("Input salah!");
+			System.out.println("Silakan ulangin Input!");
+			System.out.println("");
+			System.out.print("Izin: ");
+			izin = input.next();
+			}
+			System.out.print("Tanpa Keterangan: ");
+			alpa = input.next();
+			if (alpa.matches("\\d*") == false){
+			System.out.println("Input salah!");
+			System.out.println("Silakan ulangin Input!");
+			System.out.println("");
+			System.out.print("Tanpa Keterangan: ");
+			alpa = input.next();
+			}
+			cetakRapor();
+		
+			// TODO: handle exception
+			
 		
 
 	}
@@ -542,7 +740,8 @@ public class HomeClass {
 	 * Method ini akan menampilkan keseluruhan rapor siap cetak
 	 */
 	private static void cetakRapor() {
-
+		
+		Scanner input = new Scanner(System.in);
 		System.out.println("LAPORAN HASIL BELAJAR SISWA");
 		System.out.println("========================================================");
 		System.out.println("Nama Siswa : " + nama);
@@ -550,18 +749,18 @@ public class HomeClass {
 		System.out.println("Kelas      : " + kelas);
 		System.out.println("Semester   : " + semester);
 		System.out.println("*********************************************************");
-		System.out.println("Pendidikan Agama: " + nilaiMapel[0]);
-		System.out.println("Pendidikan Pancasila dan Kewarganegaraan: " + nilaiMapel[1]);
-		System.out.println("Bahasa Indonesia: " + nilaiMapel[2]);
-		System.out.println("Matematika: " + nilaiMapel[3]);
-		System.out.println("Ilmu Pengetahuan Alam: " + nilaiMapel[4]);
-		System.out.println("Ilmu Pengetahuan Sosial: " + nilaiMapel[5]);
-		System.out.println("Kerajinan Tangan dan Kesenian: " + nilaiMapel[6]);
-		System.out.println("Pendidikan Jasmani dan Kesehatan: " + nilaiMapel[7]);
-		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta: " + nilaiMapel[8]);
-		System.out.println("Bahasa Inggris: " + nilaiMapel[9]);
+		System.out.println("Pendidikan Agama: " + df.format(nilaiMapel[0]));
+		System.out.println("Pendidikan Pancasila dan Kewarganegaraan: " + df.format(nilaiMapel[1]));
+		System.out.println("Bahasa Indonesia: " + df.format(nilaiMapel[2]));
+		System.out.println("Matematika: " + df.format(nilaiMapel[3]));
+		System.out.println("Ilmu Pengetahuan Alam: " + df.format(nilaiMapel[4]));
+		System.out.println("Ilmu Pengetahuan Sosial: " + df.format(nilaiMapel[5]));
+		System.out.println("Kerajinan Tangan dan Kesenian: " + df.format(nilaiMapel[6]));
+		System.out.println("Pendidikan Jasmani dan Kesehatan: " + df.format(nilaiMapel[7]));
+		System.out.println("Pendidikan Lingkungan dan Budaya Jakarta: " + df.format(nilaiMapel[8]));
+		System.out.println("Bahasa Inggris: " + df.format(nilaiMapel[9]));
 		System.out.println("*********************************************************");
-		System.out.println("Nilai Akhir Rapor: " + nilaiRapor);
+		System.out.println("Nilai Akhir Rapor: " + df.format(nilaiRapor));
 		System.out.println("========================================================");
 		System.out.println("Ekstrakulikuler");
 		System.out.println("Pramuka			: " + pramuka);
@@ -576,6 +775,18 @@ public class HomeClass {
 		System.out.println("Izin: " + izin);
 		System.out.println("Tanpa Keterangan: " + alpa);
 		System.out.println("========================================================");
+		System.out.println("1. keluar");
+		System.out.println("2. input Data Siswa");
+		System.out.println("3. Logout");
+		System.out.print("pilihan : ");
+		String pilih = input.next();
+		if(pilih.equalsIgnoreCase("1")){
+			System.exit(0);
+		}
+		else if(pilih.equalsIgnoreCase("2")){
+			inputDataAnak();
+		}else if(pilih.equalsIgnoreCase("3")){
+			tampilkanMenuLoginGuru();
+		}
 	}
-
 }
