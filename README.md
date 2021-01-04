@@ -2,7 +2,7 @@
 Proyek Akhir Rekayasa Perangkat Lunak: Sistem E-Rapor
 
 Installasi Program:
-Download lalu jalankan file HomeClass.java pada console.
+Download lalu jalankan file HomeClass.java pada konsol.
 
 Input Login: 
 Username: guru1 password: gurusatu
